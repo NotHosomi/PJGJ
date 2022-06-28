@@ -4,38 +4,49 @@ using UnityEngine;
 
 public class ClawBase : MonoBehaviour
 {
-    Rigidbody2D rb;
     [SerializeField] float accel;
-    [SerializeField] float chain_reel_speed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();    
-    }
+    [SerializeField] float max_vel;
+    [SerializeField] float friction;
+    [SerializeField] float elasticity;
+    Vector3 vel;
 
     // Update is called once per frame
-    float chain_slack = 1;
     void Update()
     {
-        Vector2 vel = rb.velocity;
+        float wish = 0;
         if (Input.GetKey(KeyCode.A))
         {
-            vel.x -= accel;
+            wish = -accel * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            vel.x += accel;
+            wish = accel * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.W))
+        if((wish == 0 || Mathf.Sign(vel.x) != Mathf.Sign(wish)) && vel.x != 0)
         {
-            chain_slack += chain_reel_speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            chain_slack += chain_reel_speed;
+            wish += -Mathf.Sign(vel.x) * friction * Time.deltaTime;
         }
 
-        rb.velocity = vel;
+        vel.x += wish;
+        vel.x = Mathf.Min(vel.x, max_vel);
+        vel.x = Mathf.Max(vel.x, -max_vel);
+        transform.position += vel * Time.deltaTime;
+
+
+        if (transform.position.x > 8)
+        {
+            Vector3 p = transform.position;
+            p.x = 7.9f;
+            transform.position = p;
+            vel *= -elasticity;
+        }
+        if (transform.position.x < -8)
+        {
+            Vector3 p = transform.position;
+            p.x = -7.9f;
+            transform.position = p;
+            vel *= -elasticity;
+        }
+
     }
 }
