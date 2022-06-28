@@ -24,7 +24,10 @@ public class ClawBase : MonoBehaviour
         }
         if((wish == 0 || Mathf.Sign(vel.x) != Mathf.Sign(wish)) && vel.x != 0)
         {
-            wish += -Mathf.Sign(vel.x) * friction * Time.deltaTime;
+            if (Mathf.Abs(vel.x) < 0.1f)
+                vel.x = 0;
+            else
+                wish += -Mathf.Sign(vel.x) * friction * Time.deltaTime;
         }
 
         vel.x += wish;
