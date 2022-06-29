@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 759361483
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wire
+    uniqueID: 2278328227
+    locked: 0
+  - name: Anchor
+    uniqueID: 1616136717
+    locked: 0
+  - name: Ball
+    uniqueID: 2695980735
     locked: 0
