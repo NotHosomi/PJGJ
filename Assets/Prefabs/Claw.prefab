@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 3078087502643611658}
   - component: {fileID: 3078087502643611659}
   - component: {fileID: 3078087502643611657}
+  - component: {fileID: -4104349142797173806}
   m_Layer: 8
   m_Name: Claw
   m_TagString: Untagged
@@ -747,3 +748,27 @@ MonoBehaviour:
   L: {fileID: 3078087501100232851}
   R: {fileID: 3078087500711645186}
   speed: 70
+--- !u!233 &-4104349142797173806
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078087502643611652}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359

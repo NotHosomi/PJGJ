@@ -5,6 +5,7 @@ public class Wire : MonoBehaviour {
     public Rigidbody2D hook;
 
     public GameObject wirePrefab;
+    public HingeJoint2D targetObject;
 
     public int wires = 7;
 
@@ -21,5 +22,7 @@ public class Wire : MonoBehaviour {
 
             previousRB = link.GetComponent<Rigidbody2D>();
         }
+
+        targetObject.connectedBody = previousRB;
     }
 }
